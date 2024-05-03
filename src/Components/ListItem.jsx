@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import Button from "./Button"
+import DeleteConfirmationModal from "./DeleteConfirmationModal"
 
-function ListItem({item, onChecked}) {
+function ListItem({item, onChecked, onDelete, showModal, onShowModal, onHideModal}) {
 
     return (
         <div>
@@ -9,9 +10,15 @@ function ListItem({item, onChecked}) {
                 <input className="checkbox" type="checkbox" value={item.checked} onChange={() => onChecked(item.id)}/>
                 <p>{item.title} <strong>- Added by:</strong> {item.addedBy}</p>
                 <Button className="btn item-btn">Edit</Button>
-                <Button className="btn item-btn">Delete</Button>
+                <Button onClick={() => onShowModal(item.id)} className="btn item-btn">Delete</Button>
             </li>
 
+            {showModal && (
+                <DeleteConfirmationModal
+                    onDelete={onDelete}
+                    onHideModal={onHideModal}
+                />
+            )}
         </div>
     )
 }
