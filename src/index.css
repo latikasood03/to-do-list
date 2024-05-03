@@ -10,7 +10,11 @@ body {
   font-family: sans-serif;
   color: #5a3e2b;
   font-family: "Quicksand";
-  overflow: hidden;
+}
+
+.app{
+  display:grid;
+  grid-template-rows: 0.4fr 1fr 0.3fr;
 }
 
 .btn {
@@ -32,8 +36,14 @@ body {
   border: none;
 }
 
-.container{
-  background-color: rgb(193, 234, 221);
+.item-btn {
+  padding: 1px 1px;
+  font-size: 0.7rem;
+  border-radius: 0;
+}
+
+.main-container{
+  background-color: rgb(254, 233, 202);
   flex-direction: column;
   display: flex;
   align-items: center;
@@ -41,19 +51,31 @@ body {
   height: 100vh;
 }
 
+.container{
+  background-color: rgb(193, 234, 221);
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 3rem;
+}
+
+.itemHeading {
+  padding: 1rem;
+}
+
 input {
   border-radius: 20px;
   border: none;
-  padding: 1rem 5rem;
-  margin: 1rem;
+  padding: 1rem 3rem;
   font-size: 1rem;
   text-align: center;
 }
 
-.inputBox {
+.inputContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 1rem;
 }
 
 h3{
@@ -73,12 +95,33 @@ h3{
 .list {
   background-color: rgb(193, 234, 221);
   color: rgb(7, 84, 60);
-  padding: 16rem 0;
+  padding: 250px 0;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 3.2rem;
   align-items: center;
+  overflow: hidden;
+}
+
+.list ul {
+  list-style: none;
+  display: grid;
+  width: 80%;
+  grid-template-columns: auto auto auto auto;
+  align-content: start;
+  gap: 40px 80px;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.checkbox{
+  width:20px;
+  height:20px;
+  margin: 10px; 
 }
 
 .footer {
