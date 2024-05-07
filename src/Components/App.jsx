@@ -4,12 +4,13 @@ import Home from "./Home";
 import AddListItem from "./AddListItem";
 import { useState } from "react";
 
-
-
 function App() {
   const [items, setItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [deleteItem, setDeleteItem] = useState(null);
+  const [editItem, setEditItem] = useState(null);
+  const [editText, setEditText] = useState("");
+
 
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
@@ -21,6 +22,17 @@ function App() {
         item.id === id ? { ...item, checked: !item.checked } : item
       )
     );
+  }
+
+  function handleEdit(id) {
+    setItems((items) => 
+      items.map((item) =>
+        item.id === id ? {...item, title: editText} : item
+      )
+    )
+
+    setEditItem(null);
+    setEditText("");
   }
 
   function handleDelete() {
@@ -44,7 +56,19 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home items={items} onChecked={handleChecked} onDelete={handleDelete} showModal={showModal} onShowModal={handleShowModal} onHideModal={handleHideModal}/>,
+      element: <Home 
+        items={items} 
+        onChecked={handleChecked} 
+        onDelete={handleDelete} 
+        showModal={showModal} 
+        onShowModal={handleShowModal} 
+        onHideModal={handleHideModal}
+        onEdit={handleEdit}
+        editItem={editItem}
+        setEditItem={setEditItem}
+        editText={editText}
+        setEditText={setEditText}
+      />,
     },
     {
       path: "/addListItem",

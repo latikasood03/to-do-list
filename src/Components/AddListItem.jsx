@@ -24,11 +24,11 @@ function AddListItem({onAddItems}) {
         <div className="container">
             <h2 className="itemHeading">Add a new item</h2>
             <div >
-                <div className="inputContainer">
+                <div className="input-container">
                     <label htmlFor="items"><h3>Title:</h3></label>
                     <input id="items" type="text" placeholder="Enter an item to add..." value={title} onChange={(e) => setTitle(e.target.value)} required/>
                 </div>
-                <div className="inputContainer">
+                <div className="input-container">
                     <label htmlFor="addBy"><h3>Added by:</h3></label>
                     <input id="addBy" type="text" placeholder="Item added by..." value={addedBy} onChange={(e) => setAddedBy(e.target.value)} required/>
                 </div>

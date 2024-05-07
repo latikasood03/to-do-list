@@ -37,9 +37,10 @@ body {
 }
 
 .item-btn {
+  width:50px;
   padding: 1px 1px;
   font-size: 0.7rem;
-  border-radius: 0;
+  border-radius: 5px;
 }
 
 .main-container{
@@ -71,9 +72,10 @@ input {
   padding: 1rem 3rem;
   font-size: 1rem;
   text-align: center;
+  margin:10px;
 }
 
-.inputContainer {
+.input-container {
   display: flex;
   padding: 1rem;
 }
