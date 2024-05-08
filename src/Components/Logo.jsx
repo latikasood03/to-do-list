@@ -1,7 +1,9 @@
+import logo from '../logo.png';
+
 function Logo() {
     return (
         <div>
-            To-do
+            <img src={logo} alt="Logo" />
         </div>
     )
 }

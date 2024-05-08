@@ -14,7 +14,8 @@ body {
 
 .app{
   display:grid;
-  grid-template-rows: 0.4fr 1fr 0.3fr;
+  grid-template-rows: 0.3fr 2fr 0.3fr;
+  
 }
 
 .btn {
@@ -87,17 +88,25 @@ h3{
 .header {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background-color: rgb(94, 175, 102);
   text-align: center;
   padding: 3.5rem;
 }
 
+.list-btn {
+  margin: auto;
+}
+
+img {
+  width:110px;
+}
+
 .list {
   background-color: rgb(193, 234, 221);
   color: rgb(7, 84, 60);
-  padding: 250px 0;
+  padding: 25px 0;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
