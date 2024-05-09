@@ -4,7 +4,7 @@ import Footer from "./Footer"
 import ListDisplay from "./ListDisplay"
 
 
-function Home({items, onChecked, onDelete, showModal, onShowModal, onHideModal, onEdit, editItem, setEditItem, editText, setEditText}) {
+function Home({items, onChecked, onDelete, showModal, onShowModal, onHideModal, onEdit, editItem, setEditItem, editText, setEditText, onCloseEdit, setItems}) {
     
     return (
         <div className="app">
@@ -21,6 +21,8 @@ function Home({items, onChecked, onDelete, showModal, onShowModal, onHideModal, 
                 setEditItem={setEditItem}
                 editText={editText}
                 setEditText={setEditText}
+                onCloseEdit={onCloseEdit}
+                setItems={setItems}
             />
             <Footer items={items}/>
         </div> 

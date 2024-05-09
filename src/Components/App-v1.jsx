@@ -3,12 +3,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./Home";
 import AddListItem from "./AddListItem";
 import { useState } from "react";
+import EditItem from "./EditItem";
 
 function App() {
   const [items, setItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [deleteItem, setDeleteItem] = useState(null);
   const [editItem, setEditItem] = useState(null);
+  // const [editText, setEditText] = useState("");
 
 
   function handleAddItems(item) {
@@ -22,6 +24,17 @@ function App() {
       )
     );
   }
+
+  // function handleEdit(id) {
+  //   setItems((items) => 
+  //     items.map((item) =>
+  //       item.id === id ? {...item, title: editText} : item
+  //     )
+  //   )
+  //   console.log(id)
+  //   setEditItem(null);
+  //   // setEditText("");
+  // }
 
   function handleCloseEdit() {
     setEditItem(null);
@@ -56,8 +69,11 @@ function App() {
         showModal={showModal} 
         onShowModal={handleShowModal} 
         onHideModal={handleHideModal}
+        // onEdit={handleEdit}
         editItem={editItem}
         setEditItem={setEditItem}
+        // editText={editText}
+        // setEditText={setEditText}
         setItems={setItems}
         onCloseEdit={handleCloseEdit}
       />,
@@ -65,6 +81,10 @@ function App() {
     {
       path: "/addListItem",
       element: <AddListItem onAddItems={handleAddItems} />,
+    },
+    {
+      path: "/editItem/:id",
+      element: <EditItem />
     }
   ])
 
