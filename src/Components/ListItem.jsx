@@ -2,9 +2,8 @@
 import Button from "./Button"
 import DeleteConfirmationModal from "./DeleteConfirmationModal"
 
-function ListItem({item, onChecked, onDelete, showModal, onShowModal, onHideModal, setEditItem}) {
- 
-//  onEdit, editItem, , editText, setEditText, onCloseEdit
+function ListItem({item, onChecked, onDelete, showModal, onShowModal, onHideModal}) { 
+
     return (
         <div>
 
@@ -12,11 +11,11 @@ function ListItem({item, onChecked, onDelete, showModal, onShowModal, onHideModa
                 <input className="checkbox" type="checkbox" value={item.checked} onChange={() => onChecked(item.id)}/>
                 <p>{item.title} <strong>- Added by:</strong> {item.addedBy}</p>
                  
-                <Button onClick={() => setEditItem(item.id)} className="btn item-btn">Edit</Button>
+                <Button to={`/edit/${item.id}`} className="btn item-btn">Edit</Button>    
                 <Button onClick={() => onShowModal(item.id)} className="btn item-btn">Delete</Button>
-                               
+                         
             </li>
-
+    
             {showModal && (
                 <DeleteConfirmationModal
                     onDelete={onDelete}

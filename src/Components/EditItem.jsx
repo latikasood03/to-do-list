@@ -1,40 +1,46 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import Button from "./Button"
+import Button from "./Button";
+import { useNavigate, useParams } from 'react-router-dom';
 
-function EditItem({item, onChecked, onCloseEdit, setEditItem, setItems}) {
+function EditItem({ items, onCloseEdit, setEditItem, setItems}) {
+    
+    const { id } = useParams();
+    const item = items.find(item => item.id === parseInt(id));
     const [editText, setEditText] = useState(item.title);
+    const navigate = useNavigate();
+
  
-    function handleEdit(id) {
+    function handleSubmit(e) {
+        e.preventDefault()
         setItems((items) => 
           items.map((item) =>
-            item.id === id ? {...item, title: editText} : item
+            item.id === parseInt(id) ? {...item, title: editText} : item
           )
         )
         
         setEditItem(null);
         setEditText("");
+        navigate('/');
       }
 
+
     return (
-        <div>
-
-            <li>
-                <input className="checkbox" type="checkbox" value={item.checked} onChange={() => onChecked(item.id)}/>
-                <div> 
+        <form className="main-container" onSubmit={handleSubmit}>
+            <div className="container">
+                    <h2>Edit title</h2>
                     <input type="text" value={editText} onChange={(e) => setEditText(e.target.value)}/>
-                    <strong>- Added by:</strong> {item.addedBy}
-                </div>
-
-                <Button onClick={() => handleEdit(item.id)} className="btn item-btn">Save</Button>
-                <Button onClick={onCloseEdit} className="btn item-btn">Cancel</Button>
-               
+    
+                    <div>
+                        <Button className="btn item-btn">Save</Button>
+                        <Button onClick={onCloseEdit} className="btn item-btn">Cancel</Button>
+                    </div>
                 
-            </li>
-
-        </div>
+            </div>
+        </form>
     )
 }
 
 
 export default EditItem
+

@@ -1,14 +1,26 @@
 /* eslint-disable no-undef */
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Home from "./Home";
 import AddListItem from "./AddListItem";
-import { useState } from "react";
+import EditItem from "./EditItem";
 
 function App() {
   const [items, setItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [deleteItem, setDeleteItem] = useState(null);
   const [editItem, setEditItem] = useState(null);
+
+  useEffect(function() {
+    const items = JSON.parse(localStorage.getItem("items"));
+    if (items) {
+        setItems(items);
+    }
+  } , []);
+
+  useEffect(function() {
+    localStorage.setItem("items", JSON.stringify(items));
+  } , [items]);
 
 
   function handleAddItems(item) {
@@ -25,7 +37,7 @@ function App() {
 
   function handleCloseEdit() {
     setEditItem(null);
-    // setEditText("");
+    setEditText("");
   }
 
   function handleDelete() {
@@ -38,7 +50,6 @@ function App() {
   function handleShowModal(id) {
     setShowModal(true);
     setDeleteItem(id);
-    console.log(deleteItem);
   }
 
   function handleHideModal() {
@@ -50,7 +61,7 @@ function App() {
     {
       path: "/",
       element: <Home 
-        items={items} 
+        items={items}
         onChecked={handleChecked} 
         onDelete={handleDelete} 
         showModal={showModal} 
@@ -63,12 +74,18 @@ function App() {
       />,
     },
     {
-      path: "/addListItem",
+      path: "/add",
       element: <AddListItem onAddItems={handleAddItems} />,
+    },
+    {
+      path: "/edit/:id",
+      element: <EditItem items={items} setEditItem={setEditItem} setItems={setItems}/>
     }
   ])
 
-  return <RouterProvider router={router}/>
+
+
+  return <RouterProvider router={router} />
 }
 
 export default App
