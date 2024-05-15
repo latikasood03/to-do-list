@@ -1,25 +1,16 @@
 /* eslint-disable react/prop-types */
+import { useSelector } from "react-redux";
 import ListItem from "./ListItem"
 ;
-function ListDisplay({items, onChecked, showModal, onShowModal, onDelete, onHideModal, onEdit, editItem, setEditItem, editText, setEditText, onCloseEdit}) {
-    
+function ListDisplay() {
+    const items = useSelector((store) => store.items);
+
     return (
         <div className="list">
             <ul>
                 {items.map((item) => (
                 <ListItem 
                     item={item} 
-                    onChecked={onChecked} 
-                    onDelete={onDelete} 
-                    showModal={showModal} 
-                    onShowModal={onShowModal} 
-                    onHideModal={onHideModal}
-                    onEdit={onEdit}
-                    editItem={editItem}
-                    setEditItem={setEditItem}
-                    editText={editText}
-                    setEditText={setEditText}
-                    onCloseEdit={onCloseEdit}
                     key={item.id}
                 />))}
             </ul>

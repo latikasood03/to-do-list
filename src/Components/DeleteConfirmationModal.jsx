@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
+import { useDispatch } from "react-redux";
 import Button from "./Button";
+import { deleteItem } from "../itemsSlice";
 
-function DeleteConfirmationModal({onDelete, onHideModal}) {
-
+function DeleteConfirmationModal({ item, setShowModal }) {
+  const dispatch = useDispatch();
+  
+  function handleDelete() {
+    dispatch(deleteItem(item.id)); 
+  }
     return (
     <div className="modal-overlay">
       <div className="modal">
@@ -10,8 +16,8 @@ function DeleteConfirmationModal({onDelete, onHideModal}) {
           <h2>Confirm Delete</h2>
           <p>Are you sure you want to delete this item from the list?</p>
           <div className="modal-actions">
-            <Button onClick={onDelete} className="btn">Delete</Button>
-            <Button onClick={onHideModal} className="btn">Cancel</Button>
+            <Button onClick={handleDelete} className="btn">Delete</Button>
+            <Button onClick={() => setShowModal(false)} className="btn">Cancel</Button>          
           </div>
         </div>
       </div>

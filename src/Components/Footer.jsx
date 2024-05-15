@@ -1,5 +1,9 @@
+import { useSelector } from "react-redux";
+
 /* eslint-disable react/prop-types */
-function Footer({items}) {
+function Footer() {
+    const items = useSelector((store) => store.items);
+
     const numItems = items.length;
     const numChecked = items.filter((item) => item.checked).length;
 

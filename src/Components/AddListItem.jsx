@@ -2,8 +2,11 @@
 import { useState } from "react"
 import Button from "./Button"
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItem } from "../itemsSlice"; 
 
-function AddListItem({onAddItems}) {
+function AddListItem() {
+    const dispatch = useDispatch();
     const [title, setTitle] = useState("");
     const [addedBy, setAddedBy] = useState("");
     const navigate = useNavigate();
@@ -12,7 +15,7 @@ function AddListItem({onAddItems}) {
         e.preventDefault();
         const newItem = {title, addedBy, id: Date.now()};
 
-        onAddItems(newItem);
+        dispatch(addItem(newItem));
     
         setTitle('');
         setAddedBy('');
