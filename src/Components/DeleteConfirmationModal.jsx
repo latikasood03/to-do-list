@@ -8,6 +8,7 @@ function DeleteConfirmationModal({ item, setShowModal }) {
   
   function handleDelete() {
     dispatch(deleteItem(item.id)); 
+    setShowModal(false);
   }
     return (
     <div className="modal-overlay">

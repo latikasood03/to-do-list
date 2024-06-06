@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Header from "./Header"
 import Footer from "./Footer"
-import ListDisplay from "./ListDisplay"
+import ItemDisplay from "./ItemDisplay"
 
 
 function Home() {
@@ -9,7 +9,7 @@ function Home() {
     return (
         <div className="app">
             <Header />
-            <ListDisplay />
+            <ItemDisplay />
             <Footer />
         </div> 
     )
