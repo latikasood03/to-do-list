@@ -2,7 +2,7 @@
 import { useSelector } from "react-redux";
 import ListItem from "./ListItem";
 
-function ListView({showModal, setShowModal}) {
+function ListView({itemToDelete, setItemToDelete}) {
     const items = useSelector((store) => store.items);
 
     return (
@@ -11,8 +11,8 @@ function ListView({showModal, setShowModal}) {
                 {items.map((item) => (
                     <ListItem 
                     item={item} 
-                    showModal={showModal}
-                    setShowModal={setShowModal}
+                    itemToDelete={itemToDelete}
+                    setItemToDelete={setItemToDelete} 
                     key={item.id}
                     />))}
             </ul>

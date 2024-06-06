@@ -3,12 +3,13 @@ import { useDispatch } from "react-redux";
 import Button from "./Button";
 import { deleteItem } from "../itemsSlice";
 
-function DeleteConfirmationModal({ item, setShowModal }) {
+function DeleteConfirmationModal({ item, setItemToDelete }) {
   const dispatch = useDispatch();
-  
+
   function handleDelete() {
+    console.log(item.id);
     dispatch(deleteItem(item.id)); 
-    setShowModal(false);
+    setItemToDelete(null);
   }
     return (
     <div className="modal-overlay">
@@ -18,7 +19,7 @@ function DeleteConfirmationModal({ item, setShowModal }) {
           <p>Are you sure you want to delete this item from the list?</p>
           <div className="modal-actions">
             <Button onClick={handleDelete} className="btn">Delete</Button>
-            <Button onClick={() => setShowModal(false)} className="btn">Cancel</Button>          
+            <Button onClick={() => setItemToDelete(null)} className="btn">Cancel</Button>          
           </div>
         </div>
       </div>

@@ -7,20 +7,20 @@ import ListView from "./ListView";
 
 function ItemDisplay() {
     const [viewMode, setViewMode] = useState('list');
-    const [showModal, setShowModal] = useState(false);
+    const [itemToDelete, setItemToDelete] = useState(null);
 
     return (
         <div className="list">
             <ToggleViewMode setViewMode={setViewMode}/>
             {viewMode === 'list' ? (
                 <ListView 
-                showModal={showModal}
-                setShowModal={setShowModal}
+                itemToDelete={itemToDelete}
+                setItemToDelete={setItemToDelete}
                 />
             ) : (
-                <CardView 
-                showModal={showModal}
-                setShowModal={setShowModal}
+                <CardView
+                itemToDelete={itemToDelete}
+                setItemToDelete={setItemToDelete}          
                 />
             )}
         </div>

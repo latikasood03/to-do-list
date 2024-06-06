@@ -4,7 +4,7 @@ import DeleteConfirmationModal from "./DeleteConfirmationModal"
 import { useDispatch } from "react-redux";
 import { checkedItem } from "../itemsSlice";
 
-function CardItem({item, showModal, setShowModal}) {
+function CardItem({item, itemToDelete, setItemToDelete}) {
     const dispatch = useDispatch();
     
 
@@ -20,13 +20,13 @@ function CardItem({item, showModal, setShowModal}) {
                 <p><strong>Added by:</strong> {item.addedBy}</p>
                  
                 <Button to={`/edit/${item.id}`} className="btn item-btn">Edit</Button>    
-                <Button onClick={() => setShowModal(true)} className="btn item-btn">Delete</Button>
+                <Button onClick={() => setItemToDelete(item.id)} className="btn item-btn">Delete</Button>
             </div>
         </div>
-        {showModal && (
+        {itemToDelete === item.id && (
             <DeleteConfirmationModal
                 item={item}
-                setShowModal={setShowModal}
+                setItemToDelete={setItemToDelete}
             />
         )}
         </>

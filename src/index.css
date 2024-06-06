@@ -136,12 +136,10 @@ img {
 .toggle {
   display: flex;
   align-items: flex-end;
-  /* justify-content: flex-end; */
   flex-direction: column;
-  /* width: auto; */
   top: 230px;
   right: 10px;
-  position: fixed;
+  position: absolute;
 }
 
 .grid-btn {

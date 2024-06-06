@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import CardItem from "./CardItem";
 
 
-function CardView({showModal, setShowModal}) {
+function CardView({itemToDelete, setItemToDelete}) {
     const items = useSelector((store) => store.items);
 
 
@@ -12,10 +12,11 @@ function CardView({showModal, setShowModal}) {
             {items.map((item)=>(
                 <CardItem 
                     item={item} 
-                    showModal={showModal}
-                    setShowModal={setShowModal}
+                    itemToDelete={itemToDelete}
+                setItemToDelete={setItemToDelete} 
                     key={item.id}/>
             ))}
+            
         </div>
     )
 }
